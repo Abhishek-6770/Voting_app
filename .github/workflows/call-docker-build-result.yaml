@@ -82,7 +82,7 @@ jobs:
       ### defaults to false
       # comment-enable: false
   deploy:
-    needs: call-docker-build
+    
     runs-on: ubuntu-latest
     steps:
     - name: Set up kubectl
