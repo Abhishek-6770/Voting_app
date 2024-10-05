@@ -88,6 +88,7 @@ jobs:
     steps:
     - name: Set up kubectl
       run: |
+        mkdir -p $HOME/.kube
         echo "${{ secrets.KUBE_CONFIG_DATA }}" | base64 --decode > $HOME/.kube/config
 
     - name: Deploy Frontend and Backend to Kubernetes
