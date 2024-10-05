@@ -203,7 +203,8 @@ jobs:
           echo "tag=gha-${{ github.run_id }}" >> $GITHUB_OUTPUT
 
   deploy:
-    needs: build
+    needs: Build+Push
+
     runs-on: ubuntu-latest
     steps:
     - name: Set up kubectl
