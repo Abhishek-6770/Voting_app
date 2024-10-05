@@ -202,24 +202,24 @@ jobs:
           # shellcheck disable=SC2086
           echo "tag=gha-${{ github.run_id }}" >> $GITHUB_OUTPUT
 
-  deploy:
-    needs: Build+Push
+  # deploy:
+  #   needs: Build+Push
 
-    runs-on: ubuntu-latest
-    steps:
-    - name: Set up kubectl
-      run: |
-        echo "${{ secrets.KUBE_CONFIG_DATA }}" | base64 --decode > $HOME/.kube/config
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - name: Set up kubectl
+  #     run: |
+  #       echo "${{ secrets.KUBE_CONFIG_DATA }}" | base64 --decode > $HOME/.kube/config
 
-    - name: Deploy Frontend and Backend to Kubernetes
-      run: |
-        kubectl apply -f k8s-specifications/result-deployment.yaml
-        kubectl apply -f k8s-specifications/db-deployment.yaml
-        kubectl apply -f k8s-specifications/redis-deployment.yaml
-        kubectl apply -f k8s-specifications/vote-deployment.yaml
-        kubectl apply -f k8s-specifications/worker-deployment.yaml
-        kubectl apply -f k8s-specifications/vote-service.yaml
-        kubectl apply -f k8s-specifications/db-service.yaml
-        kubectl apply -f k8s-specifications/result-service.yaml
-        kubectl apply -f k8s-specifications/redis-service.yaml
+  #   - name: Deploy Frontend and Backend to Kubernetes
+  #     run: |
+  #       kubectl apply -f k8s-specifications/result-deployment.yaml
+  #       kubectl apply -f k8s-specifications/db-deployment.yaml
+  #       kubectl apply -f k8s-specifications/redis-deployment.yaml
+  #       kubectl apply -f k8s-specifications/vote-deployment.yaml
+  #       kubectl apply -f k8s-specifications/worker-deployment.yaml
+  #       kubectl apply -f k8s-specifications/vote-service.yaml
+  #       kubectl apply -f k8s-specifications/db-service.yaml
+  #       kubectl apply -f k8s-specifications/result-service.yaml
+  #       kubectl apply -f k8s-specifications/redis-service.yaml
         
